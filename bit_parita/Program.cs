@@ -10,7 +10,7 @@ namespace bit_parita
         public static int ASCII(char carattere)
         {
             return (int)carattere;
-        }
+        }                                         //funzione che converte il carattere in ASCII
         public static int[] Binary(int decimale)
         {
             int[] bin = new int[8];
@@ -21,7 +21,7 @@ namespace bit_parita
                 decimale /= 2;
             }
             return bin;
-        }
+        }                                        //funzione che converte il numer da ASCII decimale a binario
         public static void HParity(ref int[,] matrice, int[] binario, int index)
         {
             int somma = 0;
@@ -32,14 +32,14 @@ namespace bit_parita
             }
             if (somma%2 == 0)
             {
-                matrice[7, index] = 1;
+                matrice[7, index] = 0;
             }
             else
             {
-                matrice[7, index] = 0;
+                matrice[7, index] = 1;
             }
-        }
-        public static void VParity(ref int[,] matrice, int index)
+        }        //funzione che calcola i bit di parità orizontale
+        public static void VDParity(ref int[,] matrice, int index)
         {
             int somma = 0;
             for (int i = 0; i < 7; i++)
@@ -54,7 +54,7 @@ namespace bit_parita
             {
                 matrice[index, 7] = 0;
             }
-        }
+        }                      //funzione che calcola i bit di parità dispari verticale
         public static void Visual(int[,] matrice)
         {
             Console.WriteLine();
@@ -89,7 +89,7 @@ namespace bit_parita
                 Console.WriteLine();
             }
             Console.ForegroundColor = ConsoleColor.White;
-        }
+        }                                       //funzione che stampa i caratteri in binario e i bit di parità/disparità
         static void Main(string[] args)
         {
             //inserisci un carattere
@@ -108,10 +108,10 @@ namespace bit_parita
             }
             for (int i = 0; i < 7;i++)
             {
-                VParity(ref mat1, i);
+                VDParity(ref mat1, i);
             }
             //visualizzo
             Visual(mat1);
-        }
+        } 
     }
 }
